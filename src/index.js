@@ -102,6 +102,7 @@ async function onLoadMoreClick() {
 
   if ((imageFinder.page - 1) * imageFinder.perPage >= imageFinder.totalHits) {
     hideLoadBtn();
+    showEndOfResultsMessage();
   }
 }
 
@@ -177,7 +178,25 @@ function showSlogan() {
 
 function notifySearchNameAbsence() {
   Notiflix.Notify.info(
-    'No, no, no! God, no! To search for pictures you need to specify what you are looking for.',
+    'To search for pictures you need to specify what you are looking for!',
+    {
+      position: 'right-bottom',
+    }
+  );
+}
+
+function showNoImagesMessage() {
+  Notiflix.Notify.warning(
+    "We're sorry, but there are no images matching your search. Please try again.",
+    {
+      position: 'right-bottom',
+    }
+  );
+}
+
+function showEndOfResultsMessage() {
+  Notiflix.Notify.info(
+    "We're sorry, but you've reached the end of search results.",
     {
       position: 'right-bottom',
     }
